@@ -46,19 +46,19 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
               ),
             ),
             const LoginWidget(),
-            Transform.translate(
-                offset: Offset(155, 140),
-                child: CircleAvatar(
-                    radius: (30),
-                    backgroundColor: Colors.white,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image.asset(
-                        "assets/images/chef.png",
-                        width: 35,
-                        height: 35,
-                      ),
-                    ))),
+            // Transform.translate(
+            //     offset: Offset(155, 140),
+                // child: CircleAvatar(
+                //     radius: (30),
+                //     backgroundColor: Colors.white,
+                //     child: ClipRRect(
+                //       borderRadius: BorderRadius.circular(50),
+                      // child: Image.asset(
+                      //   "assets/images/chef.png",
+                      //   width: 35,
+                      //   height: 35,
+                      // ),
+            //         ))),
           ],
         ),
       ),

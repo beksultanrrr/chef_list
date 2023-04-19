@@ -68,7 +68,7 @@ flutter:
     - assets/countrycodes.json
     - assets/images/chef.svg
 
-    - assets/images/chef.png
+    - assets/images/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

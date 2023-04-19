@@ -8,7 +8,8 @@ const kTextFieldDecoration = InputDecoration(
   hintStyle: TextStyle(
       color: Colors.white,
       fontSize: 18,
-      fontFamily: "Cera-Pro-bold"), //<-- SEE HERE
+      fontFamily: "Cera-Pro-bold"),
+   //<-- SEE HERE
 
   contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
   border: OutlineInputBorder(
@@ -21,11 +22,10 @@ const kTextFieldDecoration = InputDecoration(
   focusedBorder: OutlineInputBorder(
     borderSide: BorderSide(color: Colors.transparent, width: 2.0),
     borderRadius: BorderRadius.all(Radius.circular(10.0)),
+    
   ),
 );
 
-var kmaskFormatter =  MaskTextInputFormatter(
-  mask: '+# (###) ###-##-##', 
-  filter: { "#": RegExp(r'[0-9]') },
-  type: MaskAutoCompletionType.lazy
-);
+
+bool showFirstContainer = true;
+

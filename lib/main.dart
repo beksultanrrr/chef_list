@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screen/background_viedo.dart';
+import 'screen/demo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: BackgroundVideo(),
+      home:  BackgroundVideo(),
     );
   }
 }

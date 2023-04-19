@@ -2,211 +2,304 @@ import 'package:flutter/material.dart';
 import 'package:chef_list/screen/enter_number.dart';
 import 'package:chef_list/components/title.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:chef_list/components/constant.dart';
+import 'package:chef_list/components/checkbox.dart';
+import 'package:chef_list/components/social_media_button.dart';
 
-class LoginWidget extends StatelessWidget {
+class LoginWidget extends StatefulWidget {
   const LoginWidget({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<LoginWidget> createState() => _LoginWidgetState();
+}
+
+class _LoginWidgetState extends State<LoginWidget> {
+  double containerHeight = 600.0;
+  void changeHeight() {
+    setState(() {
+      containerHeight = 400;
+    });
+  }
+
+  void toggleContainer() {
+    setState(() {
+      showFirstContainer = !showFirstContainer;
+      print(showFirstContainer);
+    });
+  }
+
+  bool isChecked = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-            color: Color.fromRGBO(39, 39, 39, 1),
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25), topRight: Radius.circular(25))),
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: 50),
-          child: Column(
-            children: [
-              TitleText(
-                  text: "Cheflist",
-                  colour: Colors.white,
-                  size: 35,
-                  fontFamily: "Cera-Pro-black"),
-              SizedBox(
-                height: 45,
-              ),
-              TitleText(
-                  text: "Авторизация",
-                  colour: Colors.white,
-                  size: 24,
-                  fontFamily: "Cera-Pro-black"),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                "Пожалуйста выберите способ авторизации",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Color.fromRGBO(159, 170, 174, 1),
-                    fontSize: 14,
-                    fontFamily: "Cera-Pro-black"),
-              ),
-              EnterNumber(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Icon(
-                      FontAwesomeIcons.google,
-                      size: 30,
+    return SafeArea(
+      child: Align(
+          alignment: Alignment.bottomCenter,
+          child: showFirstContainer
+              ? AnimatedContainer(
+                  height: containerHeight,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                      color: Color.fromRGBO(39, 39, 39, 1),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(25),
+                          topRight: Radius.circular(25))),
+                  duration: Duration(milliseconds: 200),
+                  child: Column(children: [
+                    SizedBox(
+                      height: 50,
                     ),
-                    style: ElevatedButton.styleFrom(
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.all(17),
-                      primary: Color.fromRGBO(54, 54, 54, 1),
+                    TitleText(
+                        text: "Cheflist",
+                        colour: Colors.white,
+                        size: 35,
+                        fontFamily: "Cera-Pro-black"),
+                    SizedBox(
+                      height: 45,
                     ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Icon(
-                      FontAwesomeIcons.facebookF,
-                      color: Colors.blue,
-                      size: 30,
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.all(17),
-                      primary: Color.fromRGBO(54, 54, 54, 1),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Icon(
-                      FontAwesomeIcons.apple,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.all(17),
-                      primary: Color.fromRGBO(54, 54, 54, 1),
-                    ),
-                  ),
-                ],
-              ),
-              TextButton(
-                onPressed: () {
-                  showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (BuildContext context) {
-                        return Container(
+                    TitleText(
+                        text: "Авторизация",
+                        colour: Colors.white,
+                        size: showFirstContainer ? 24 : 15,
+                        fontFamily: "Cera-Pro-black"),
+                    Expanded(
+                        child: SingleChildScrollView(
+                            padding: EdgeInsets.symmetric(vertical: 50),
                             child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Text("Just a title"),
-                            ConstrainedBox(
-                              constraints: new BoxConstraints(
-                                maxHeight: MediaQuery.of(context).size.height /
-                                    3.5 *
-                                    3.0, //this height is not contain `Text("Just a title")`'s height.
-                              ),
-                              child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "Пожалуйста выберите способ авторизации",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(159, 170, 174, 1),
+                                      fontSize: 14,
+                                      fontFamily: "Cera-Pro-black"),
+                                ),
+                                EnterNumber(),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton(
+                                      onPressed: () {},
+                                      child: Image.asset(
+                                        "assets/images/google.png",
+                                        width: 35,
+                                        height: 35,
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        shape: CircleBorder(),
+                                        padding: EdgeInsets.all(13),
+                                        primary: Color.fromRGBO(54, 54, 54, 1),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    SocialMedaiButton(
+                                        icoon: Icon(
+                                          FontAwesomeIcons.facebookF,
+                                          color: Colors.blue,
+                                          size: 35,
+                                        ),
+                                        onTap: () {}),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    SocialMedaiButton(
+                                        icoon: Icon(
+                                          FontAwesomeIcons.apple,
+                                          color: Colors.white,
+                                          size: 35,
+                                        ),
+                                        onTap: () {})
+                                  ],
+                                ),
+                                TextButton(
+                                  onPressed: () {},
+                                  child: RichText(
+                                    text: const TextSpan(
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.black),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                            text: 'или',
+                                            style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    159, 170, 174, 1))),
+                                        TextSpan(
+                                          text: ' продолжить как гость',
+                                          style: TextStyle(
+                                            color: Color.fromRGBO(
+                                                159, 170, 174, 1),
+                                            decoration:
+                                                TextDecoration.underline,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 30),
+                                  child: Row(
+                                    children: [
+                                      CheckBOX(),
+                                      TextButton(
+                                        onPressed: () {
+                                          changeHeight();
+                                          toggleContainer();
+                                          Future.delayed(
+                                              Duration(milliseconds: 200), () {
+                                            setState(() {
+                                              containerHeight = 650;
+                                            });
+                                          });
+                                        },
+                                        child: Container(
+                                          width: 256,
+                                          child: Wrap(
+                                            alignment: WrapAlignment.center,
+                                            // s
+                                            children: [
+                                              RichText(
+                                                text: TextSpan(
+                                                  style: TextStyle(
+                                                      fontSize: 16,
+                                                      color: Colors.black),
+                                                  children: <TextSpan>[
+                                                    TextSpan(
+                                                        text:
+                                                            'Я прочитал(а) и соглашаюсь с',
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 10)),
+                                                    TextSpan(
+                                                      text:
+                                                          ' Пользовательским соглашениям и Политикой конфединциальности',
+                                                      style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            159, 170, 174, 1),
+                                                        decoration:
+                                                            TextDecoration
+                                                                .underline,
+                                                        fontSize: 10,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            )))
+                  ]))
+              : AnimatedContainer(
+                  height: containerHeight,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                      color: Color.fromRGBO(39, 39, 39, 1),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(25),
+                          topRight: Radius.circular(25))),
+                  duration: Duration(milliseconds: 200),
+                  child: Column(children: [
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.ideographic,
+                        children: [
+                          TitleText(
+                              text: "Cheflist",
+                              colour: Colors.white,
+                              size: 35,
+                              fontFamily: "Cera-Pro-black"),
+                          Padding(
+                            padding: EdgeInsets.only(right: 15, left: 50),
+                            child: IconButton(
+                                onPressed: () {
+                                  changeHeight();
+                                  toggleContainer();
+                                  Future.delayed(Duration(milliseconds: 300),
+                                      () {
+                                    setState(() {
+                                      containerHeight = 600;
+                                    });
+                                  });
+                                },
+                                icon: Icon(
+                                  Icons.close,
+                                  size: 30,
+                                  color: Colors.white,
+                                )),
+                          )
+                        ]),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    TitleText(
+                        text: "Политика конфедициальности",
+                        colour: Colors.white,
+                        size: 18,
+                        fontFamily: "Cera-Pro-black"),
+                    Expanded(
+                        child: SingleChildScrollView(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 30, horizontal: 22),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('sdsdsdsds'),
-                                  Text('sdsdsdsds'),
-                                  Text('sdsdsdsds'),
-                                  Text('sdsdsdsds'),
-                                  Text('sdsdsdsds'),
-                                  Text('sdsdsdsds'),
-                                  Text('sdsdsdsds'),
-                                  Text('sdsdsdsds'),
-                                  Text('sdsdsdsds'),
-                                  Text('sdsdsdsds'),
-                                  Text('sdsdsdsds'),
-                                  Text('sdsdsdsds'),
-                                  Text('sdsdsdsds'),
-                                  Text('sdsdsdsds'),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ));
-                      });
-                },
-                child: RichText(
-                  text: TextSpan(
-                    style: TextStyle(fontSize: 16, color: Colors.black),
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'или',
-                          style: TextStyle(
-                              color: Color.fromRGBO(159, 170, 174, 1))),
-                      TextSpan(
-                        text: ' продолжить как гость',
-                        style: TextStyle(
-                          color: Color.fromRGBO(159, 170, 174, 1),
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
+                                  DescriptionText(
+                                    text:
+                                        "Настоящая Политика конфиденциальности персональных данных (далее – Политика конфиденциальности) действует в отношении всей информации, которую данный сайт, на котором размещен текст этой Политики конфиденциальности, может получить о Пользователе, а также любых программ и продуктов, размещенных на нем.",
+                                  ),
+                                  Text(
+                                    "1. Определение терминов",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  DescriptionText(
+                                      text:
+                                          "1.1 В настоящей Политике конфиденциальности используются следующие термины:"),
+                                  DescriptionText(
+                                      text:
+                                          "1.1.1. «Администрация сайта» – уполномоченные сотрудники на управления сайтом, действующие от его имени, которые организуют и (или) осуществляет обработку персональных данных, а также определяет цели обработки персональных данных, состав персональных данных, подлежащих обработке, действия (операции), совершаемые с персональными данными."),
+                                  DescriptionText(
+                                      text:
+                                          "1.1.2. «Персональные данные» — любая информация, относящаяся к прямо или косвенно определенному или определяемому физическому лицу (субъекту персональных данных). "),
+                                  DescriptionText(
+                                      text:
+                                          "1.1.3. «Обработка персональных данных» — любое действие (операция) или совокупность действий (операций), совершаемых с использованием средств автоматизации или без использования таких средств с персональными данными, включая сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление, уничтожение персональных данных.")
+                                ])))
+                  ]))),
     );
   }
 }
 
-class BottomSheet extends StatelessWidget {
-  const BottomSheet({
-    super.key,
-  });
-
+class DescriptionText extends StatelessWidget {
+  const DescriptionText({super.key, required this.text});
+  final String text;
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-          height: 340,
-          color: Color(0xff757575),
-          child: Container(
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(20))),
-            // child: Padding(
-            // padding: EdgeInsets.only(right: 20, left: 20, top: 20, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  "Add Task",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.lightBlueAccent,
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500),
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.lightBlue, // Background color
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    "Add",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                )
-              ],
-            ),
-          )),
+    return Padding(
+      padding: EdgeInsets.only(top: 20, bottom: 15),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 13, color: Color.fromRGBO(159, 170, 174, 1)),
+      ),
     );
   }
 }
