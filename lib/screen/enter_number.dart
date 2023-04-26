@@ -9,7 +9,7 @@ class EnterNumber extends StatelessWidget {
   EnterNumber({
     super.key,
   });
-  final maskFormatter = new MaskTextInputFormatter(
+  final maskFormatter = MaskTextInputFormatter(
     mask: '+# (###) ###-##-##',
   );
 
@@ -19,7 +19,7 @@ class EnterNumber extends StatelessWidget {
     void _callBackFunction(String name, String dialCode, String flag) {}
 
     return Padding(
-      padding: EdgeInsets.only(top: 30, bottom: 35, left: 15, right: 15),
+      padding: const EdgeInsets.only(top: 30, bottom: 35, left: 15, right: 15),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -36,16 +36,16 @@ class EnterNumber extends StatelessWidget {
                 //   headerTextColor: Colors.white,
                 // ),
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(54, 54, 54, 1),
+                  color: const Color.fromRGBO(54, 54, 54, 1),
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Flexible(
                 child: TextField(
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                       fontFamily: "Cera-Pro-bold"),
@@ -57,7 +57,7 @@ class EnterNumber extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           GestureDetector(

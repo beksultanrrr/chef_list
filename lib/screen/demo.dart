@@ -1,64 +1,99 @@
+import 'package:chef_list/components/privacy_policy.dart';
 import 'package:flutter/material.dart';
+import 'package:chef_list/components/constant.dart';
+import 'package:chef_list/components/first_screen.dart';
 
-import 'package:flutter/material.dart';
-
-class AnimatedLogoContainer extends StatefulWidget {
-  const AnimatedLogoContainer({Key? key}) : super(key: key);
+class LoginWidget extends StatefulWidget {
+  const LoginWidget({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  _AnimatedLogoContainerState createState() => _AnimatedLogoContainerState();
+  State<LoginWidget> createState() => _LoginWidgetState();
 }
 
-class _AnimatedLogoContainerState extends State<AnimatedLogoContainer> {
-  bool _expanded = false;
+class _LoginWidgetState extends State<LoginWidget> {
+  double containerHeight = 600.0;
+  void changeHeight() {
+    setState(() {
+      containerHeight = 400;
+    });
+  }
+
+  void toggleContainer() {
+    setState(() {
+      showFirstContainer = !showFirstContainer;
+      print(showFirstContainer);
+    });
+  }
+
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        AnimatedPositioned(
-          duration: Duration(seconds: 1),
-          curve: Curves.easeInOut,
-          top: _expanded ? 100 : 200,
-          left: 0,
-          child: Container(
-            width: 100,
-            height: 100,
-            color: Colors.transparent,
-          ),
-        ),
-        AnimatedPositioned(
-          duration: Duration(seconds: 1),
-          curve: Curves.easeInOut,
-          top: _expanded ? 0 : 100,
-          left: 0,
-          child: Container(
-            width: 100,
-            height: 200,
-            color: Colors.blue,
-            child: Text("sdsdsdsdsdsdsdsd"),
-          ),
-        ),
-        AnimatedPositioned(
-          duration: Duration(seconds: 1),
-          curve: Curves.easeInOut,
-          top: _expanded ? 0 : 100,
-          left: 0,
-          child: Image.asset(
-            "assets/images/chef.png",
-            width: 35,
-            height: 35,
-          ),
-        ),
-        FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              _expanded = !_expanded;
-            });
-          },
-          child: Icon(Icons.arrow_downward),
-        ),
-      ],
+    return SafeArea(
+      child: Align(
+          alignment: Alignment.bottomCenter,
+          child: showFirstContainer
+              ? AnimatedContainer(
+        height: containerHeight,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+            color: Color.fromRGBO(39, 39, 39, 1),
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25), topRight: Radius.circular(25))),
+        duration: Duration(milliseconds: 200),
+        child:FirstScreen(
+                  containerHeight: containerHeight,
+                  onTap: () {
+                    changeHeight();
+                    toggleContainer();
+                    Future.delayed(Duration(milliseconds: 200), () {
+                      setState(() {
+                        containerHeight = 650;
+                      });
+                    });
+                  },
+                )
+              )
+              : 
+              AnimatedContainer(
+        height: containerHeight,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+            color: Color.fromRGBO(39, 39, 39, 1),
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25), topRight: Radius.circular(25))),
+        duration: Duration(milliseconds: 200),
+        child:
+              PrivacyPolicy(
+                  containerHeight: containerHeight,
+                  onTap: () {
+                    changeHeight();
+                    toggleContainer();
+                    Future.delayed(Duration(milliseconds: 200), () {
+                      setState(() {
+                        containerHeight = 600;
+                      });
+                    });
+                  },
+                )),
+      )
+    );
+  }
+}
+
+class DescriptionText extends StatelessWidget {
+  const DescriptionText({super.key, required this.text});
+  final String text;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: 20, bottom: 15),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 13, color: Color.fromRGBO(159, 170, 174, 1)),
+      ),
     );
   }
 }

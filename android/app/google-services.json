@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "773951210930",
+    "project_id": "sign-in-e38b3",
+    "storage_bucket": "sign-in-e38b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773951210930:android:756cb3308fc8d29b6bd0ab",
+        "android_client_info": {
+          "package_name": "com.beksultanrrr.chef_list"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773951210930-o0t258csknmvnbufrr3aa17glachjmcj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjrSbgr2HsZEZH0rB-4LreV3SRjMeKnjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773951210930-o0t258csknmvnbufrr3aa17glachjmcj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
