@@ -31,8 +31,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Align(
+    return Align(
       alignment: Alignment.bottomCenter,
       child: Stack(clipBehavior: Clip.none, children: [
         AnimatedContainer(
@@ -46,7 +45,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             duration: Duration(milliseconds: 200),
             child: showFirstContainer
                 ? FirstScreen(
-                    containerHeight: containerHeight, 
+                    containerHeight: containerHeight,
                     onTap: () {
                       changeHeight();
                       toggleContainer();
@@ -85,7 +84,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   ),
                 )))
       ]),
-    ));
+    );
   }
 }
 

@@ -19,150 +19,155 @@ class FirstScreen extends StatelessWidget {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      SizedBox(
-        height: 50,
-      ),
-      TitleText(
-          text: "Cheflist",
-          colour: Colors.white,
-          size: 35,
-          fontFamily: "Cera-Pro-black"),
-      SizedBox(
-        height: 45,
-      ),
-      Expanded(
-          child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              child: Column(
-                children: [
-                  TitleText(
-                      text: "Авторизация",
-                      colour: Colors.white,
-                      size: 24,
-                      fontFamily: "Cera-Pro-black"),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Пожалуйста выберите способ авторизации",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Color.fromRGBO(159, 170, 174, 1),
-                        fontSize: 14,
+    return SafeArea(
+      child: Column(children: [
+        SizedBox(
+          height: 30,
+        ),
+        TitleText(
+            text: "Cheflist",
+            colour: Colors.white,
+            size: 35,
+            fontFamily: "Cera-Pro-black"),
+        SizedBox(
+          height: 35,
+        ),
+        Expanded(
+            child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Column(
+                  children: [
+                    TitleText(
+                        text: "Авторизация",
+                        colour: Colors.white,
+                        size: 24,
                         fontFamily: "Cera-Pro-black"),
-                  ),
-                  EnterNumber(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          _googleSignIn.signIn().then((value) {
-                            String userName = value!.displayName!;
-                            print(userName);
-                          });
-                        },
-                        child: Image.asset(
-                          "assets/images/google.png",
-                          width: 35,
-                          height: 35,
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(13),
-                          primary: Color.fromRGBO(54, 54, 54, 1),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      SocialMedaiButton(
-                          icoon: Icon(
-                            FontAwesomeIcons.facebookF,
-                            color: Colors.blue,
-                            size: 35,
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Пожалуйста выберите способ авторизации",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Color.fromRGBO(159, 170, 174, 1),
+                          fontSize: 14,
+                          fontFamily: "Cera-Pro-black"),
+                    ),
+                    EnterNumber(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            _googleSignIn.signIn().then((value) {
+                              String userName = value!.displayName!;
+                              print(userName);
+                            });
+                          },
+                          child: Image.asset(
+                            "assets/images/google.png",
+                            width: 35,
+                            height: 35,
                           ),
-                          onTap: () {}),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      SocialMedaiButton(
-                          icoon: Icon(
-                            FontAwesomeIcons.apple,
-                            color: Colors.white,
-                            size: 35,
+                          style: ElevatedButton.styleFrom(
+                            shape: CircleBorder(),
+                            padding: EdgeInsets.all(13),
+                            primary: Color.fromRGBO(54, 54, 54, 1),
                           ),
-                          onTap: () {})
-                    ],
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: RichText(
-                      text: const TextSpan(
-                        style: TextStyle(fontSize: 16, color: Colors.black),
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: 'или',
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        SocialMedaiButton(
+                            icoon: Icon(
+                              FontAwesomeIcons.facebookF,
+                              color: Colors.blue,
+                              size: 35,
+                            ),
+                            onTap: () {}),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        SocialMedaiButton(
+                            icoon: Icon(
+                              FontAwesomeIcons.apple,
+                              color: Colors.white,
+                              size: 35,
+                            ),
+                            onTap: () {})
+                      ],
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: RichText(
+                        text: const TextSpan(
+                          style: TextStyle(fontSize: 16, color: Colors.black),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: 'или',
+                                style: TextStyle(
+                                    color: Color.fromRGBO(159, 170, 174, 1))),
+                            TextSpan(
+                              text: ' продолжить как гость',
                               style: TextStyle(
-                                  color: Color.fromRGBO(159, 170, 174, 1))),
-                          TextSpan(
-                            text: ' продолжить как гость',
-                            style: TextStyle(
-                              color: Color.fromRGBO(159, 170, 174, 1),
-                              decoration: TextDecoration.underline,
+                                color: Color.fromRGBO(159, 170, 174, 1),
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CheckBOX(),
+                          TextButton(
+                            onPressed: onTap,
+                            child: Container(
+                              width: 256,
+                              child: Wrap(
+                                alignment: WrapAlignment.center,
+                                // s
+                                children: [
+                                  RichText(
+                                    text: TextSpan(
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.black),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                            text:
+                                                'Я прочитал(а) и соглашаюсь с',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 10)),
+                                        TextSpan(
+                                          text:
+                                              ' Пользовательским соглашениям и Политикой конфединциальности',
+                                          style: TextStyle(
+                                            color: Color.fromRGBO(
+                                                159, 170, 174, 1),
+                                            decoration:
+                                                TextDecoration.underline,
+                                            fontSize: 10,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
-                    child: Row(
-                      children: [
-                        CheckBOX(),
-                        TextButton(
-                          onPressed: onTap,
-                          child: Container(
-                            width: 256,
-                            child: Wrap(
-                              alignment: WrapAlignment.center,
-                              // s
-                              children: [
-                                RichText(
-                                  text: TextSpan(
-                                    style: TextStyle(
-                                        fontSize: 16, color: Colors.black),
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                          text: 'Я прочитал(а) и соглашаюсь с',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 10)),
-                                      TextSpan(
-                                        text:
-                                            ' Пользовательским соглашениям и Политикой конфединциальности',
-                                        style: TextStyle(
-                                          color:
-                                              Color.fromRGBO(159, 170, 174, 1),
-                                          decoration: TextDecoration.underline,
-                                          fontSize: 10,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              )))
-    ]);
+                  ],
+                )))
+      ]),
+    );
   }
 
   Future<UserCredential> signInWithGoogle() async {

@@ -14,6 +14,7 @@ class EnterNumber extends StatelessWidget {
   );
 
   final TextEditingController controller = TextEditingController();
+  FocusNode _focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     void _callBackFunction(String name, String dialCode, String flag) {}
@@ -28,13 +29,12 @@ class EnterNumber extends StatelessWidget {
               Container(
                 height: 48,
                 width: 65,
-
-                // child: CountryPicker(
-                //   callBackFunction: _callBackFunction,
-                //   headerText: 'Select Country',
-                //   headerBackgroundColor: Theme.of(context).primaryColor,
-                //   headerTextColor: Colors.white,
-                // ),
+                child: CountryPicker(
+                  callBackFunction: _callBackFunction,
+                  headerText: 'Select Country',
+                  headerBackgroundColor: Theme.of(context).primaryColor,
+                  headerTextColor: Colors.white,
+                ),
                 decoration: BoxDecoration(
                   color: const Color.fromRGBO(54, 54, 54, 1),
                   borderRadius: BorderRadius.circular(8),
@@ -45,6 +45,7 @@ class EnterNumber extends StatelessWidget {
               ),
               Flexible(
                 child: TextField(
+                  focusNode: _focusNode,
                   style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -62,6 +63,7 @@ class EnterNumber extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
+              _focusNode.unfocus();
               print("YES");
             },
             child: Container(

@@ -25,27 +25,23 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
       SizedBox(
         height: 50,
       ),
-      Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          textBaseline: TextBaseline.ideographic,
-          children: [
-            TitleText(
-                text: "Cheflist",
-                colour: Colors.white,
-                size: 35,
-                fontFamily: "Cera-Pro-black"),
-            Padding(
-              padding: EdgeInsets.only(right: 15, left: 50, bottom: 10),
-              child: IconButton(
-                  onPressed: widget.onTap,
-                  icon: Icon(
-                    Icons.close,
-                    size: 30,
-                    color: Colors.white,
-                  )),
-            )
-          ]),
+      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+        IconButton(
+          onPressed: widget.onTap,
+          icon: Icon(
+            Icons.close,
+            size: 30,
+            color: Colors.white,
+          ),
+        ),
+      ]),
+      TitleText(
+        text: "Cheflist",
+        colour: Colors.white,
+        size: 35,
+        fontFamily: "Cera-Pro-black",
+      ),
+      SizedBox(height: 15),
       Expanded(
           child: SingleChildScrollView(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 22),
